@@ -34,7 +34,7 @@ This means that the first call to packagePath/packageURL will initiate the query
 
 For that reason, packagePath and packageURL properties are KVO compliant on macOS 10.15 Catalina!
  
-```
+```objective-c
 - (void)willEnterPane:(InstallerSectionDirection)dir
 {
 	// the call will not succeed on Catalina because of request roundtrip to another process
