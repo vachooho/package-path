@@ -4,7 +4,7 @@ InstallerPane category to query the package path.
 This should have been a public API in InstallerPane interface.
 Since it is not, here is the category to query the package path.
 
-To use, add InstallerPane+InstallerPaneMissingMethodAdditions.h and InstallerPane+InstallerPaneMissingMethodAdditions.m files to your Installer plug-in project.
+To use, add InstallerPane+VHInstallerPaneMissingMethodAdditions.h and InstallerPane+VHInstallerPaneMissingMethodAdditions.m files to your Installer plug-in project.
 
 This will add 2 new methods to the InstallerPane class:
  
@@ -18,7 +18,7 @@ This will add 2 new methods to the InstallerPane class:
 and in your InstallerPane subclass file import the header file:
  
 ```objective-c
-#import "InstallerPane+InstallerPaneMissingMethodAdditions.h"
+#import "InstallerPane+VHInstallerPaneMissingMethodAdditions.h"
 ```
  
 The sample InstallerPluginTest project and InstallerPluginTest package demonstrate the usage.
