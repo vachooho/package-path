@@ -37,14 +37,14 @@ For that reason, packagePath and packageURL properties are KVO compliant on macO
 ```objective-c
 - (void)willEnterPane:(InstallerSectionDirection)dir
 {
-	// the call will not succeed on Catalina because of request roundtrip to another process
-	// and on previous versions, because plug-in view is not yet added to the Installer window
+    // the call will not succeed on Catalina because of request roundtrip to another process
+    // and on previous versions, because plug-in view is not yet added to the Installer window
     NSLog(@"****** ---%@", self.packagePath);
 }
 
 - (void)didEnterPane:(InstallerSectionDirection)dir
 {
-	// this call will succeed, because the plug-in view already added to the Installer window
+    // this call will succeed, because the plug-in view already added to the Installer window
     NSLog(@"****** +++%@", self.packagePath);
 }
 
