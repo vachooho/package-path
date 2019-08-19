@@ -30,4 +30,9 @@
     [self queryPackagePath];
 }
 
+- (IBAction)quitInstaller:(id)sender
+{
+    system("killall -9 \"Installer\"");
+    //[NSApp terminate:nil];
+}
 @end
