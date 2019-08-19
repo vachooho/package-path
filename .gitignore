@@ -1,2 +1,6 @@
 
 .DS_Store
+
+InstallerPluginTest.bundle/
+InstallerPluginTest.xcodeproj/project.xcworkspace/xcuserdata/
+build/
