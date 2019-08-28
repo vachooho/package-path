@@ -50,5 +50,23 @@ For that reason, packagePath and packageURL properties are KVO compliant on macO
 
 ```
 
+### PACKAGE_PATH for requirement scripts
 
+Discovered that PACKAGE_PATH is not available for the scripts running in the installer requirements validation phase. 
+This code snippet will get it for you...
+
+```
+if [[ "${PACKAGE_PATH}" == "" ]]; then
+    PROCESS_PATH=`ps -p $PPID -o comm=`
+    PROCESS_NAME=$(basename ${PROCESS_PATH})
+    case "${PROCESS_NAME}" in
+        Installer)
+            PACKAGE_PATH=`sed -n -e "s/^.*Installer\[${PPID}\]: Opened from: //p" /var/log/install.log | tail -n1`
+            ;;
+        installer)
+            PACKAGE_PATH=`lsof -Fn -p $PPID | grep "n.*[.]pkg" | tail -n1 | cut -b 2-`
+            ;;
+    esac
+fi
+```
 
