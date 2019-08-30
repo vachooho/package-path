@@ -58,15 +58,12 @@ This code snippet will get it for you...
 ```
 if [[ "${PACKAGE_PATH}" == "" ]]; then
     PROCESS_PATH=`ps -p $PPID -o comm=`
-    PROCESS_NAME=$(basename ${PROCESS_PATH})
-    case "${PROCESS_NAME}" in
-        Installer)
-            PACKAGE_PATH=`sed -n -e "s/^.*Installer\[${PPID}\]: Opened from: //p" /var/log/install.log | tail -n1`
-            ;;
-        installer)
-            PACKAGE_PATH=`lsof -Fn -p $PPID | grep "n.*[.]pkg" | tail -n1 | cut -b 2-`
-            ;;
-    esac
+    if [[ "${PROCESS_PATH}" == */Installer.app/Contents/MacOS/Installer ]];
+    then
+        PACKAGE_PATH=`sed -n -e "s/^.*Installer\[${PPID}\]: Opened from: //p" /var/log/install.log | tail -n1`
+    else
+        PACKAGE_PATH=`lsof -Fn -p $PPID | grep "n.*[.]pkg" | tail -n1 | cut -b 2-`
+    fi
 fi
 ```
 
